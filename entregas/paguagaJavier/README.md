@@ -27,3 +27,5 @@ Crea la primera versión de edlin, que pueda gestionar un fichero de 10 líneas
 4. Crear la funcion de añadir texto en las lineas, por ahora comenzara en la linea 4.
 
 5. Crear la funcion de borrar la linea mas reciente.
+
+6. Se organizo mejor para un main màs limpio.
