@@ -1,4 +1,3 @@
-package entregas.paguagaJavier.scr;
 import java.util.Scanner;
 
 public class ExamenMina{

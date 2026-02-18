@@ -68,3 +68,11 @@ Ingrese X
 # Pasos tomados para la solución
 
 1. Pegar el codigo inicial y buscar las malas pra´ticas cometidas.
+
+2. Arreglar buscaminas con su problema de bucle segun el comentario: "He tenido problemas al hacerlo con un bucle y al no encontrar la solucion he preferido hacerlo asi aun sabiendo que es mas costoso", intentarlo hacer for().
+
+3. En buscaminas, quitar las lineas de codigos no utilizadas, como 	"int posc=0;".
+
+4. Aclarar nombre de variables en buscaminas.
+
+5. crear static para el codigo repetido en buscaminas.
