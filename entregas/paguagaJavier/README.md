@@ -75,4 +75,12 @@ Ingrese X
 
 4. Aclarar nombre de variables en buscaminas.
 
-5. crear static para el codigo repetido en buscaminas.
+5. Crear static para el codigo repetido en buscaminas.
+
+6. En ExamenMina, quitar comentarios innecesarios.
+
+7. En el generador de minas de ExamenMina, usar un for() para tener el codigo mas compacto.
+
+8. Volver JuegoEncendido en boolean para aclarar uso en ExamenMina.
+
+9. Utilizar un do while() para quitar un else innecesario en ExamenMina.
