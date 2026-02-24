@@ -23,7 +23,7 @@ class MipyEdlin {
             mostrarLineas(lineas);
             String opcion = sc.nextLine();
             switch (opcion) {
-                case "1" -> añadirLinea(lineas, lineaElegida, sc);
+                case "1" -> modificarLinea(lineas, lineaElegida, sc);
 
                 case "2" -> borrarLinea(lineas, lineaElegida, sc);
 
@@ -62,7 +62,7 @@ class MipyEdlin {
         }
     }
 
-    static void añadirLinea(String[][] lineas, int lineaElegida, Scanner sc) {
+    static void modificarLinea(String[][] lineas, int lineaElegida, Scanner sc) {
         System.out.println("Añadiendo línea...");
         System.out.println("Elija en que línea desea añadir el texto (0-9): ");
         lineaElegida = sc.nextInt();
