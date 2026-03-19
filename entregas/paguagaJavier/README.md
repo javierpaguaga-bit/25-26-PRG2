@@ -23,4 +23,8 @@ int calcularMCD(int a, int b) {
 
 ### Pasos
 
-1. Crear Cliente.java y Fraccion.java y Añadir los metodos planeados
+1. Crear Cliente.java y Fraccion.java y añadir los metodos planeados
+
+2. Escribir el codigo dentro de todos los metodos de Fraccion.java
+
+3.
