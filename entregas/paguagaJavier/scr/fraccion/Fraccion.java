@@ -95,4 +95,8 @@ public class Fraccion {
         this.numerador = -this.numerador;
     }
 
+    public double aDecimal() {
+        return (double) this.numerador / this.denominador;
+    }
+
 }
