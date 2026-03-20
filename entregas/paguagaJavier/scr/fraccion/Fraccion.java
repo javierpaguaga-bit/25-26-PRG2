@@ -8,6 +8,7 @@ public class Fraccion {
     public Fraccion(int numerador, int denominador) {
         this.numerador = numerador;
         this.denominador = denominador;
+        assert this.denominador != 0 : "El denominador no puede ser cero";
     }
 
     public Fraccion(int numero) {
@@ -16,8 +17,8 @@ public class Fraccion {
     }
 
     public Fraccion(Fraccion fraccion) {
-        this.numerador = fraccion.numerador;
-        this.denominador = fraccion.denominador;
+        numerador = fraccion.numerador;
+        denominador = fraccion.denominador;
     }
 
     public Fraccion() {
@@ -31,10 +32,10 @@ public class Fraccion {
     }
 
     public void sumar(Fraccion fraccion) {
-        int nuevoNumerador = this.numerador * fraccion.denominador + fraccion.numerador * this.denominador;
-        int nuevoDenominador = this.denominador * fraccion.denominador;
-        this.numerador = nuevoNumerador;
-        this.denominador = nuevoDenominador;
+        int numerador = this.numerador * fraccion.denominador + fraccion.numerador * this.denominador;
+        int denominador = this.denominador * fraccion.denominador;
+        this.numerador = numerador;
+        this.denominador = denominador;
     }
 
     public void restar(Fraccion fraccion) {
@@ -76,9 +77,7 @@ public class Fraccion {
     }
 
     public boolean equals(Fraccion fraccion) {
-        int producto1 = this.numerador * fraccion.denominador;
-        int producto2 = fraccion.numerador * this.denominador;
-        return producto1 == producto2;
+        return !this.esMayor(fraccion) && !this.esMenor(fraccion);
     }
 
     public String toString() {

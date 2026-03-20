@@ -29,3 +29,6 @@ int calcularMCD(int a, int b) {
 
 3. Añadir el codigo de Cliente.java y no olvidar el conversion a decimal en Fraccion.java
 
+4. Reescribir algunas lineas de forma correcta o más eficaz
+
+
