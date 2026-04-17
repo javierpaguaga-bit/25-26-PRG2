@@ -2,7 +2,7 @@ package entregas.paguagaJavier.scr;
 
 class Caja {
 
-    public Caja(int i) {
+    public Caja[]() {
         //TODO Auto-generated constructor stub
     }
 
