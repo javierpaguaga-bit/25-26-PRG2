@@ -1,23 +1,24 @@
 package entregas.paguagaJavier.scr;
 
-class Cola {
+public class Cola {
 
     private Cliente[] clientes;
     private final int CAPACIDAD_MAXIMA = 100;
-    private int minutosSinCLientes;
-    int tamaño;
+    private int minutosSinClientes;
+    private int tamaño;
     private Console console;
 
-    public Cola(){
+    public Cola() {
         clientes = new Cliente[CAPACIDAD_MAXIMA];
-        minutosSinCLientes = 0;
+        minutosSinClientes = 0;
         tamaño = 0;
         console = new Console();
     }
 
     public void registrarEstado() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'registrarEstado'");
+        if (tamaño == 0) {
+            minutosSinClientes = minutosSinClientes + 1;
+        }
     }
 
     public void añadirCliente(Cliente cliente) {
@@ -29,29 +30,27 @@ class Cola {
         return tamaño > 0;
     }
 
-    public void mostrar() {
-        final String PERSONA = "_o/";
-        console.writeln();
+    public Cliente quitarCliente() {
+        Cliente cliente = clientes[0];
+        for (int i = 0; i < tamaño - 1; i++) {
+            clientes[i] = clientes[i + 1];
+        }
+        clientes[tamaño - 1] = null;
+        tamaño = tamaño - 1;
+        return cliente;
     }
 
-    public int obtenerMinutosSinCLientes() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'obtenerMinutosSinCLientes'");
+    public void mostrar() {
+        final String PERSONA = "_O/";
+        console.writeln(PERSONA.repeat(tamaño));
+    }
+
+    public int obtenerMinutosSinClientes() {
+        return minutosSinClientes;
     }
 
     public int obtenerCantidadPersonasEnCola() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'obtenerCantidad'");
-    }
-
-    public Cliente quitarCLiente() {
-        Cliente cliente = clientes[0];
-        for(int i = 0;i<tamaño-1;i++){
-            clientes[i] = clientes[i+1];
-        }
-        clientes[tamaño-1]=null;
-        tamaño = tamaño -1;
-        return cliente;
+        return tamaño;
     }
 
 }

@@ -2,32 +2,32 @@ package entregas.paguagaJavier.scr;
 
 import java.io.Console;
 
-class CentroComercial {
+public class CentroComercial {
 
-    private static final double PROBABILIDAD_LLEGADA = 0.4;
-    private static final String Cliente = null;
     private Cola cola;
     private Caja[] cajas;
     private Tiempo tiempo;
-    private boolean llegarClienteEsteMinuto;
+    private boolean llegaClienteEsteMinuto;
     private Console console;
+    final private double PROBABILIDAD_LLEGADA = 0.4;
 
     public CentroComercial() {
-                console = new Console();
-                cola = new Cola();
-                cajas = new Caja[4];
-                for(int i=0<cajas.length;i++){
-                    cajas[i] = new Caja(i+1);
-                }
-                tiempo = new Tiempo();
-            }
+        console = new Console();
+        cola = new Cola();
+        cajas = new Caja[4];
+        for (int i = 0; i < cajas.length; i++) {
+            cajas[i] = new Caja(i + 1);
+        }
+        tiempo = new Tiempo();
+    }
 
     public void simular() {
+
         do {
             tiempo.avanzar();
             this.procesarLlegadaCliente();
             cola.registrarEstado();
-            this.asignarClienteACajas();
+            this.asignarClientesACajas();
             this.procesarAtencionCajas();
             this.mostrarEstado();
             this.pausar();
@@ -37,63 +37,70 @@ class CentroComercial {
     }
 
     private void mostrarResumen() {
-        cola.minutosSinClientes = cola.obtenerMinutosSinCLientes();
-        cola.Cantidad = cola.obtenerCantidadPersonasEnCola();
-        this.obtenerPersonasAtendidas();
-        this.obtenerItemVendidos();
+        int minutosSinClientes = cola.obtenerMinutosSinClientes();
+        int personasEnCola = cola.obtenerCantidadPersonasEnCola();
+        int personasAtendidas = this.obtenerPersonasAtendidas();
+        int itemsVendidos = this.obtenerItemsVendidos();
+
+        console.writeln("Personas atendidas: " + personasAtendidas);
+        console.writeln("Personas en cola al cierre: " + personasEnCola);
+        console.writeln("Items vendidos: " + itemsVendidos);
+        console.writeln("Minutos sin clientes en cola: " + minutosSinClientes);
     }
 
-    private int obtenerItemVendidos() {
-        int totalItems = 0;
-        for (int numeroCaja = 0; numeroCaja < cajas.length; numeroCaja++) {
-            totalItems = totalItems + cajas[numeroCaja].obtenerPersonasAtendidas();
+    private int obtenerPersonasAtendidas(){
+        int totalItems=0;
+        for(int numeroCaja=0; numeroCaja<cajas.length; numeroCaja++){
+            totalItems= totalItems + cajas[numeroCaja].obtenerPersonasAtendidas();
         }
         return totalItems;
     }
 
-    private int obtenerPersonasAtendidas() {
-        int totalItems = 0;
-        for (int numeroCaja = 0; numeroCaja < cajas.length; numeroCaja++) {
-            cajas[numeroCaja].obtenerPersonasAtendidas();
+    private int obtenerItemsVendidos(){
+        int totalItems=0;
+        for(int numeroCaja=0; numeroCaja<cajas.length; numeroCaja++){
+            totalItems = totalItems + cajas[numeroCaja].obtenerItemsVendidos();
         }
-
         return totalItems;
     }
 
     private void pausar() {
-        console.pausar(5);
+        console.pause(5);
     }
 
     private void mostrarEstado() {
+        tiempo.mostrar(llegaClienteEsteMinuto);
         cola.mostrar();
         this.mostrarCajas();
     }
 
-    private void mostrarCajas() {
-        for (int numeroCaja = 0; numeroCaja < cajas.length; numeroCaja++) {
+    private void mostrarCajas(){
+        for(int numeroCaja=0; numeroCaja<cajas.length; numeroCaja++){
             cajas[numeroCaja].mostrar();
         }
     }
 
     private void procesarAtencionCajas() {
-        for (int numeroCaja = 0; numeroCaja < cajas.length; numeroCaja++) {
+        for(int numeroCaja=0; numeroCaja<cajas.length; numeroCaja++){
             cajas[numeroCaja].avanzarAtencion();
         }
     }
 
-    private void asignarClienteACajas() {
-        for (int numeroCaja = 0; numeroCaja < cajas.length; numeroCaja++) {
-            if (cajas[numeroCaja].estaLibre() && cola.hayClientes()) {
-                cajas[numeroCaja].asignarCliente(cola.quitarCLiente());
+    private void asignarClientesACajas() {
+        for(int numeroCaja=0; numeroCaja<cajas.length; numeroCaja++){
+            if (cajas[numeroCaja].estaLibre() && cola.hayClientes()){
+                Cliente cliente = cola.quitarCliente();
+                cajas[numeroCaja].asignar(cliente);
             }
         }
     }
 
     private void procesarLlegadaCliente() {
-        llegarClienteEsteMinuto = Math.random() <= PROBABILIDAD_LLEGADA;
+        llegaClienteEsteMinuto = Math.random() <= PROBABILIDAD_LLEGADA;
 
-        if (llegarClienteEsteMinuto) {
+        if (llegaClienteEsteMinuto) {
             cola.añadirCliente(new Cliente());
         }
+
     }
 }

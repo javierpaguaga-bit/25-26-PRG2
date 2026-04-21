@@ -1,8 +1,8 @@
 package entregas.paguagaJavier.scr;
 
-class Caja {
+public class Caja {
 
-    public Caja[]() {
+    public Caja(int i) {
         //TODO Auto-generated constructor stub
     }
 
@@ -11,7 +11,7 @@ class Caja {
         throw new UnsupportedOperationException("Unimplemented method 'estaLibre'");
     }
 
-    public void asignarCliente(Object quitarCLiente) {
+    public void asignar(Cliente cliente) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'asignarCliente'");
     }
@@ -26,9 +26,14 @@ class Caja {
         throw new UnsupportedOperationException("Unimplemented method 'mostrar'");
     }
 
-    public void obtenerPersonasAtendidas() {
+    public int obtenerPersonasAtendidas() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'obtenerPersonasAtendidas'");
+    }
+
+    public int obtenerItemsVendidos() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'obtenerItemsVendidos'");
     }
 
 }
