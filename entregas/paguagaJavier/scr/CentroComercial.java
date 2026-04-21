@@ -1,7 +1,5 @@
 package entregas.paguagaJavier.scr;
 
-import java.io.Console;
-
 public class CentroComercial {
 
     private Cola cola;
@@ -22,7 +20,6 @@ public class CentroComercial {
     }
 
     public void simular() {
-
         do {
             tiempo.avanzar();
             this.procesarLlegadaCliente();
@@ -32,7 +29,6 @@ public class CentroComercial {
             this.mostrarEstado();
             this.pausar();
         } while (!tiempo.haFinalizado());
-
         this.mostrarResumen();
     }
 
@@ -65,7 +61,7 @@ public class CentroComercial {
     }
 
     private void pausar() {
-        console.pause(5);
+        console.pause(1);
     }
 
     private void mostrarEstado() {
