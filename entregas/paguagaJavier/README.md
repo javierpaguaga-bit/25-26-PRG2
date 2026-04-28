@@ -7,3 +7,5 @@
 2. Se añade clase Juego
 
 3. Se añade clase turno y se creo metodos para Carrera
+
+4. Se han añadido unos metodos imcompletos
