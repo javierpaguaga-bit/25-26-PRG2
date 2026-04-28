@@ -9,3 +9,5 @@
 3. Se añade clase turno y se creo metodos para Carrera
 
 4. Se han añadido unos metodos imcompletos
+
+5. Refactor y Feat, se han cambiado varios metodos y añadido los faltantes, el codigo ahroa es funcional

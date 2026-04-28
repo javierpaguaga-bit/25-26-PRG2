@@ -1,35 +1,47 @@
 class Pista {
-
-    int[][] pista;
-    private int distancia;
+    private int longitud;
     private Console console;
 
-    public Pista(int longitud, int numeroJugadores) {
-        pista = new int[longitud][numeroJugadores];
-        for (int i = 0; i < numeroJugadores; i++) {
+    public Pista(int longitud) {
+        this.longitud = longitud;
+        this.console = new Console();
+    }
 
+    public void mostrar(Caballo[] caballos) {
+        String dibujoCaballo = ";=;^";
+        int anchoCaballo = dibujoCaballo.length();
+        console.writeln("-".repeat(longitud + anchoCaballo + 4));
+        for (Caballo caballo : caballos) {
+            int posicion = caballo.DistanciaRecorrida();
+            if (posicion > longitud)
+                posicion = longitud;
+            console.write("   |");
+            console.write(" ".repeat(posicion));
+            console.write(dibujoCaballo);
+            int espaciosRestantes = longitud - posicion;
+            console.write(" ".repeat(espaciosRestantes));
+            console.writeln("|");
         }
+        console.writeln("-".repeat(longitud + anchoCaballo + 4));
     }
 
-    public void mostrar() {
-        console.writeln("---+-----------+---------+---------+---------+---------+;");
-        console.writeln("---|0.........1.........2.........3.........4.........5|");
-        console.writeln("---|012345678901234567890123456789012345678901234567890|")
-        for(int i=0; i<numeroJugadores; i++) {
-            console.write(" ".repeat(distancia));
-            console.writeln(";=;`");
-        };
-
+    public boolean hayGanadores(Caballo[] caballos) {
+        for (Caballo caballo : caballos) {
+            if (caballo.DistanciaRecorrida() >= longitud) {
+                return true;
+            }
+        }
+        return false;
     }
 
-    public boolean hayGanadores() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'hayGanadores'");
+    public void mostrarResultadoFinal(Caballo[] caballos) {
+        this.mostrar(caballos);
+        console.writeln("\n¡TENEMOS UN GANADOR!");
+        for (Caballo caballo : caballos) {
+            if (caballo.DistanciaRecorrida() >= longitud) {
+                console.writeln("El Caballo " + caballo.Id() + " ha cruzado la meta.");
+            }
+        }
+        console.writeln("¡Gracias por participar!");
     }
-
-    public void mostrarResultadoFinal() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'mostrarResultadoFinal'");
-    }
-
 }
