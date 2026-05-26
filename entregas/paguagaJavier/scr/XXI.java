@@ -49,9 +49,9 @@ public class XXI {
     }
 
     private void imprimirEstadoJuego() {
-        int p = jugador.getPuntaje();
-        if (p == 21) console.write(" ==> Ganó");
-        else if (p > 21) console.write(" ==> Perdió");
+        int puntaje = jugador.getPuntaje();
+        if (puntaje == 21) console.write(" ==> Ganó");
+        else if (puntaje > 21) console.write(" ==> Perdió");
         else console.write(" ==> Sigue jugando");
         console.writeln("");
     }

@@ -75,3 +75,5 @@ Mano: [J ♣][A ♣] - Puntaje: 21 ==> Ganó
 2. Se ha avanzado y refactorizado varias de las metodos que tenian las clases a punto y se ha probado que es funciona, el siguiente paso sera mirar si hay caso donde se pueda usar herencia para que este mejor escrito.
 
 3. Se creado la clase de herencia Participante el cual ayuda a eliminar la redudaccion de poner manos en el dealer y el jugador ya que ambos son participantes, tambien añade falicidad en la escalabilidad si luego se desearia añadir algo mas al trabajo, con ello el trabajo se reconoce concluido por ahora.
+
+4. Se cambio el nombre de un objecto para definir mejor
