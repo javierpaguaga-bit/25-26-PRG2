@@ -1,44 +1,35 @@
 public class Carta {
 
-    public Carta() {
+    private int palo;
+    private int numero;
+    private final String[] PALOS = { "♠️", "♣️", "♦️", "♥️" };
+    private final String[] NUMEROS = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "X", "J", "Q", "K" };
+
+    private Console console;
+
+    public Carta(int palo, int numero) {
+        this.palo = palo;
+        this.numero = numero;
+        this.console = new Console();
     }
 
     public void mostrar() {
-    }
-
-    public void voltear() {
-
-    }
-
-    public boolean esFigura() {
-
-    }
-
-    public boolean siguiente(Carta carta) {
-
-    }
-
-    public boolean distintoColor(Carta carta) {
-
-    }
-
-    private boolean negro() {
-
-    }
-
-    private boolean esRojo() {
-
+        console.write("[" + NUMEROS[numero] + " " + PALOS[palo] + "]");
     }
 
     public boolean esAs() {
-
+        return numero == 0;
     }
 
-    public boolean igualPalo(Carta carta) {
-
+    public boolean esFigura() {
+        return numero >= 9;
     }
 
     public int getNumero() {
-    }    
+        return numero;
+    }
 
+    public int getPalo() {
+        return palo;
+    }
 }

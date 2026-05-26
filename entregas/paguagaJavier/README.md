@@ -71,3 +71,5 @@ Mano: [J ♣][A ♣] - Puntaje: 21 ==> Ganó
 ## Commits
 
 1. Se ha creado las clases iniciales con las que se trabajara unos metodos iniciales (Console.java esta siendo reutilizaddo de trabajos anteriores), se tiene planeado primero tener en trabajo sin herencia para luego analizar bien que se conectada para un uso de herencia eficiente. Por ahora se ha terminado Menu y XII con los otros pendientes.
+
+2. Se ha avanzado y refactorizado varias de las metodos que tenian las clases a punto y se ha probado que es funciona, el siguiente paso sera mirar si hay caso donde se pueda usar herencia para que este mejor escrito.

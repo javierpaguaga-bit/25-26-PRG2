@@ -1,14 +1,47 @@
 import java.util.Random;
 
-public class Baraja{
+public class Baraja {
+
+    private Carta[] cartas;
+    private int siguienteCarta;
 
     public Baraja() {
+        this.cartas = new Carta[52];
+        this.siguienteCarta = 0;
+        
+        int index = 0;
+        for (int palo = 0; palo < 4; palo++) {
+            for (int numero = 0; numero < 13; numero++) { // 13 números por palo
+                cartas[index] = new Carta(palo, numero);
+                index++;
+            }
+        }
+        this.mezclar();
     }
 
-    private void mezclar() {
-
+    public void mezclar() {
+        Random rand = new Random();
+        for (int i = 0; i < cartas.length; i++) {
+            int j = rand.nextInt(cartas.length);
+            Carta temp = cartas[i];
+            cartas[i] = cartas[j];
+            cartas[j] = temp;
+        }
+        this.siguienteCarta = 0;
     }
 
-    public void agarrarCarta() {
+    public Carta extraerCarta() {
+        if (siguienteCarta < cartas.length) {
+            return cartas[siguienteCarta++];
+        } else {
+            this.mezclar();
+            return extraerCarta();
+        }
+    }
+
+    public void mostrarContenido() {
+        for (Carta carta : cartas) {
+            carta.mostrar();
+        }
     }
 }

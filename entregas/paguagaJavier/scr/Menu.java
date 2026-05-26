@@ -6,13 +6,12 @@ public class Menu {
     }
 
     public void mostrar() {
-        console.writeln("1. Jugar");
-        console.writeln("Empezar de nuevo");
-        console.writeln("2. Salir");
+        console.writeln("1. Pedir");
+        console.writeln("2. Empezar de nuevo");
+        console.writeln("3. Salir");
     }
 
     public int pedirOpcion() {
-        return console.readInt();
-
+        return console.readInt("Opción: ");
     }
 }
