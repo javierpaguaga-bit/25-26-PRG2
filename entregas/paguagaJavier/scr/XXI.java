@@ -1,71 +1,58 @@
 public class XXI {
     private Dealer dealer;
-    private Mano mano;
+    private Jugador jugador;
     private Console console;
+    private Menu menu;
 
     public static void main(String[] args) {
         new XXI().jugar();
     }
 
     public XXI() {
-        dealer = new Dealer();
-        mano = new Mano();
-        console = new Console();
+        this.dealer = new Dealer();
+        this.jugador = new Jugador();
+        this.console = new Console();
+        this.menu = new Menu();
     }
 
     private void jugar() {
-        Menu menu = new Menu();
+        prepararPartida();
         boolean salir = false;
-        this.RecibirCarta();
-        this.RecibirCarta();
 
         do {
-            this.MostrarMano();
+            console.writeln("--------------------");
+            jugador.mostrarEstado();
+            imprimirEstadoJuego();
+            console.writeln("--------------------");
+            
             menu.mostrar();
             int opcion = menu.pedirOpcion();
 
             switch (opcion) {
-                case 1 -> {
-                    if (mano.puedeJugar()) {
-                        RecibirCarta();
-                    } else {
-                        console.writeln("No puedes pedir más cartas.");
+                case 1 -> { // Pedir
+                    if (jugador.getPuntaje() < 21) {
+                        jugador.recibirCarta(dealer.repartir());
                     }
                 }
-                case 2 -> {
-                    mano.limpiar();
-                    dealer.nuevaBaraja();
-                    RecibirCarta();
-                    RecibirCarta();
-                }
-                case 3 -> salir = true;
+                case 2 -> prepararPartida(); // Reiniciar
+                case 3 -> salir = true;      // Salir
                 default -> console.writeln("Opción no válida");
             }
-
-            if (validarFinal() && opcion == 1) {
-                this.MostrarMano();
-                validarFinal();
-                // Opcionalmente podrías forzar un reinicio aquí
-            }
-
         } while (!salir);
     }
 
-    private void RecibirCarta() {
-        Carta carta = dealer.repartirCarta();
-        mano.recibir(carta);
+    private void prepararPartida() {
+        jugador.limpiarMano();
+        dealer.nuevaBaraja();
+        jugador.recibirCarta(dealer.repartir());
+        jugador.recibirCarta(dealer.repartir());
     }
 
-    private void MostrarMano() {
-        console.writeln("--------------------");
-        mano.mostrar();
-        if (mano.haGanado()) console.writeln(" ==> Ganó");
-        else if (mano.haPerdido()) console.writeln(" ==> Perdió");
-        else console.writeln(" ==> Sigue jugando");
-        console.writeln("--------------------");
-    }
-
-    private boolean validarFinal() {
-        return mano.haGanado() || mano.haPerdido();
+    private void imprimirEstadoJuego() {
+        int p = jugador.getPuntaje();
+        if (p == 21) console.write(" ==> Ganó");
+        else if (p > 21) console.write(" ==> Perdió");
+        else console.write(" ==> Sigue jugando");
+        console.writeln("");
     }
 }

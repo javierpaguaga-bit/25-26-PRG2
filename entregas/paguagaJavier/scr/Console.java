@@ -157,5 +157,5 @@ public class Console {
             Thread.sleep(1000 * seconds);
         } catch (InterruptedException e) {
         }
-    }    
+    }
 }

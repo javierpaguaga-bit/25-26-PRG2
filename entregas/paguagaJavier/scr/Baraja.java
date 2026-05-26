@@ -8,10 +8,10 @@ public class Baraja {
     public Baraja() {
         this.cartas = new Carta[52];
         this.siguienteCarta = 0;
-        
+
         int index = 0;
         for (int palo = 0; palo < 4; palo++) {
-            for (int numero = 0; numero < 13; numero++) { // 13 números por palo
+            for (int numero = 0; numero < 13; numero++) {
                 cartas[index] = new Carta(palo, numero);
                 index++;
             }
@@ -20,9 +20,9 @@ public class Baraja {
     }
 
     public void mezclar() {
-        Random rand = new Random();
+        Random random = new Random();
         for (int i = 0; i < cartas.length; i++) {
-            int j = rand.nextInt(cartas.length);
+            int j = random.nextInt(cartas.length);
             Carta temp = cartas[i];
             cartas[i] = cartas[j];
             cartas[j] = temp;

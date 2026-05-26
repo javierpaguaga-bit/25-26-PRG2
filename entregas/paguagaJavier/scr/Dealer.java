@@ -1,19 +1,16 @@
-public class Dealer {
+public class Dealer extends Participante {
     private Baraja baraja;
-    private Console console;
 
     public Dealer() {
-        this.console = new Console();
+        super("Dealer");
         this.baraja = new Baraja();
-        this.baraja.mezclar();
     }
 
-    public Carta repartirCarta() {
+    public Carta repartir() {
         return baraja.extraerCarta();
     }
 
     public void nuevaBaraja() {
-        this.baraja = new Baraja();
-        this.baraja.mezclar();
+        baraja.mezclar();
     }
 }
